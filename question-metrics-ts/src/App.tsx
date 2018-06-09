@@ -30,6 +30,10 @@ class App extends React.Component {
           <p className="App-intro">
             Métricas de todas as provas:
           </p>
+
+          <div>
+            <span> Total de questões de prova ja respondidas: </span>
+          </div>
         </div>
 
         <div>
