@@ -16,12 +16,12 @@ class App extends React.Component {
           Provas que ja fiz:
         </p>
 
-        <div style={square}>
-          <span style={spanSquare}>05/06/2017 - TJ - RJ</span>
+        <div className="App-Square">
+          <span className="App-SpanSquare">05/06/2017 - TJ - RJ</span>
         </div>
 
-        <div style={square}>
-        <span style={spanSquare}>28/04/2018 - TJ - RS</span>
+        <div className="App-Square">
+        <span className="App-SpanSquare">28/04/2018 - TJ - RS</span>
         </div>
 
         <div style={{ clear: "both" }} >&nbsp;</div>
@@ -45,23 +45,6 @@ class App extends React.Component {
       </div>
     );
   }
-}
-
-const spanSquare: any = {
-  marginTop: "100%"
-}
-
-const square: any = {
-  alignItems: "center", 
-  backgroundColor: "#222", 
-  color: "white",
-  display: "flex",
-  float: "left",     
-  height: 0, 
-  justifyContent: "center",
-  margin: "5px",
-  paddingBottom: "30%",
-  width: "30%"  
 }
 
 export default App;
