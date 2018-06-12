@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import { ExamsAlreadyHappened } from './ExamsAlreadyHappened'
+import { ExamsTooked } from './ExamsTooked'
 
 import logo from './logo.svg';
 
@@ -13,19 +14,7 @@ class App extends React.Component {
           <h1 className="App-title">Welcome to QuestionMetrics</h1>
         </header>
 
-        <p className="App-intro">
-          Provas que ja fiz:
-        </p>
-
-        <div className="App-Square">
-          <span className="App-SpanSquare">05/06/2017 - TJ - RJ</span>
-        </div>
-
-        <div className="App-Square">
-          <span className="App-SpanSquare">28/04/2018 - TJ - RS</span>
-        </div>
-
-        <div style={{ clear: "both" }} >&nbsp;</div>
+        <ExamsTooked />
 
         <div>
           <p className="App-intro">
