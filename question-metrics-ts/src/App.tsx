@@ -14,17 +14,7 @@ class App extends React.Component {
           <h1 className="App-title">Welcome to QuestionMetrics</h1>
         </header>
 
-        <ExamsTooked />
-
-        <div>
-          <p className="App-intro">
-            Métricas de todas as provas:
-          </p>
-
-          <div>
-            <span> Total de questões de prova ja respondidas: </span>
-          </div>
-        </div>
+        <ExamsTooked />        
 
         <ExamsAlreadyHappened />        
       </div>

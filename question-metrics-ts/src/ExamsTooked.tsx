@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import {ExamsTookedMetrics} from './ExamsTookedMetrics';
 
 export class ExamsTooked extends React.Component {
     public render() {
@@ -18,6 +19,8 @@ export class ExamsTooked extends React.Component {
             </div>
 
             <div style={{ clear: "both" }} >&nbsp;</div>
+
+            <ExamsTookedMetrics />
         </div>             
       )
     }
