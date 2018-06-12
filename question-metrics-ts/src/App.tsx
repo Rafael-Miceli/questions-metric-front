@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import { ExamsAlreadyHappened } from './ExamsAlreadyHappened'
 
 import logo from './logo.svg';
 
@@ -21,7 +22,7 @@ class App extends React.Component {
         </div>
 
         <div className="App-Square">
-        <span className="App-SpanSquare">28/04/2018 - TJ - RS</span>
+          <span className="App-SpanSquare">28/04/2018 - TJ - RS</span>
         </div>
 
         <div style={{ clear: "both" }} >&nbsp;</div>
@@ -36,12 +37,7 @@ class App extends React.Component {
           </div>
         </div>
 
-        <div>
-          <p className="App-intro">
-            Concursos já ocorridos:
-          </p>
-        </div> 
-        
+        <ExamsAlreadyHappened />        
       </div>
     );
   }
