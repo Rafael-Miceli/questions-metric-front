@@ -1,30 +1,18 @@
 import * as React from 'react';
 import './App.css';
+import { ExamsTookedService } from './ExamesTookedService';
 import {ExamsTookedMetrics} from './ExamsTookedMetrics';
+import { IExam } from "./IExam";
 
-interface IExams {
-    exams: IExam[];
-}
+export class ExamsTooked extends React.Component<IExam, IExam[]> {    
 
-interface IExam {
-    title: string;
-}
-
-const exams: IExam[] = [
-    {title: '20/02/2018 - TJ - RS'},
-    {title: '28/05/2018 - TJ - RJ'},
-    {title: '15/04/2018 - TJ - SP'}
-]
-
-export class ExamsTooked extends React.Component {
+    private examsTooked: IExam[];
     
-    
-    constructor(props: IExams) {
+    constructor(props: IExam) {
         super(props);
-        
-        this.state = this.props;
 
-        this.setState(exams);
+        const examsTookedService = new ExamsTookedService();
+        this.examsTooked = examsTookedService.getAllExams();        
     }
 
     public render() {
@@ -35,19 +23,14 @@ export class ExamsTooked extends React.Component {
             </p>
 
             {
-                exams.map(exam => {
+                this.examsTooked.map(exam => {
                     return(
                         <div key={exam.title} className="App-Square">
                             <span className="App-SpanSquare">{exam.title}</span>
                         </div>    
                     )                    
                 })
-            }
-                        
-
-            {/* <div className="App-Square">
-                <span className="App-SpanSquare">28/04/2018 - TJ - RS</span>
-            </div> */}
+            }                      
 
             <div style={{ clear: "both" }} >&nbsp;</div>
 

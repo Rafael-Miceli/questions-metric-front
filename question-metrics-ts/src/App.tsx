@@ -2,7 +2,6 @@ import * as React from 'react';
 import './App.css';
 import { ExamsAlreadyHappened } from './ExamsAlreadyHappened'
 import { ExamsTooked } from './ExamsTooked'
-
 import logo from './logo.svg';
 
 class App extends React.Component {
@@ -14,7 +13,7 @@ class App extends React.Component {
           <h1 className="App-title">Welcome to QuestionMetrics</h1>
         </header>
 
-        <ExamsTooked />        
+        <ExamsTooked title={'20/02/2018 - TJ - RS'}  />        
 
         <ExamsAlreadyHappened />        
       </div>
