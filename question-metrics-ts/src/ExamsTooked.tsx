@@ -25,8 +25,8 @@ export class ExamsTooked extends React.Component<IExam, IExam[]> {
             {
                 this.examsTooked.map(exam => {
                     return(
-                        <div key={exam.title} className="App-Square">
-                            <span className="App-SpanSquare">{exam.title}</span>
+                        <div key={exam.name} className="App-Square">
+                            <span className="App-SpanSquare">{exam.name}</span>
                         </div>    
                     )                    
                 })
