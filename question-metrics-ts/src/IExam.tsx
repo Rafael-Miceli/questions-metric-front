@@ -1,3 +1,11 @@
+export interface IUser {
+    id: string;
+    name: string;
+    email: string;
+    birth: Date;
+    tookedExams: IExam[];
+}
+
 export interface IExam {
     name: string;
     date: Date;
@@ -20,8 +28,9 @@ export interface IExamMetrics {
     totalQuestions: number;
     totalWrongQuestions: number;
     totalCorrectQuestions: number;
-    // reasonsMissedQuestions: IReasonMissedQuestions[]
+    reasonsMissedQuestions: IReasonMissedQuestions[]
 }
-// export interface IReasonMissedQuestions {
-//     item1: 
-// }
+export interface IReasonMissedQuestions {
+    reason: string;
+    total: number;
+}

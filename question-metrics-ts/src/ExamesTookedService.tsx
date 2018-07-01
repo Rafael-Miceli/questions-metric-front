@@ -1,12 +1,14 @@
-import { IExam } from "./IExam";
+import { IUser } from "./IExam";
 
 export class ExamsTookedService {
 
-    public getAllExams(): IExam[] {
-        return [
-            {title: '20/02/2018 - TJ - RS'},
-            {title: '28/05/2018 - TJ - RJ'},
-            {title: '15/04/2018 - TJ - SP'}
-        ];
+    public getAllExams(): Promise<IUser>{
+        return fetch("http://localhost:5000/api/Account/id/add6f86c-db9e-4e72-8994-3233654d71e3")
+                .then(resp => {
+                    return resp.json()
+                })
+                .then(res => {
+                    return res;
+                })
     }
 }

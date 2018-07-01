@@ -2,40 +2,70 @@ import * as React from 'react';
 import './App.css';
 import { ExamsTookedService } from './ExamesTookedService';
 import {ExamsTookedMetrics} from './ExamsTookedMetrics';
-import { IExam } from "./IExam";
+import { IExam, IExamMetrics, IUser } from "./IExam";
 
-export class ExamsTooked extends React.Component<IExam, IExam[]> {    
+export class ExamsTooked extends React.Component<any, ExamsTookedState> {
 
-    private examsTooked: IExam[];
+    private ExamsTooked: ExamsTookedState = {User: null, FirstExamMetrics: null, FirstExam: null};
     
-    constructor(props: IExam) {
+    constructor(props: any) {
         super(props);
 
         const examsTookedService = new ExamsTookedService();
-        this.examsTooked = examsTookedService.getAllExams();        
+        examsTookedService.getAllExams().then((user: IUser) => {
+            
+            if (user.tookedExams.length) {
+                this.ExamsTooked = {User: user, FirstExamMetrics: user.tookedExams[0].examMetrics, FirstExam: user.tookedExams[0]};                
+            } else {
+                this.ExamsTooked = {User: user, FirstExamMetrics: null, FirstExam: null};
+            }
+
+            // tslint:disable-next-line:no-console
+            console.log("Exames feitos: ", this.ExamsTooked);
+        
+            this.setState(this.ExamsTooked)
+        });        
     }
 
     public render() {
-      return (
-        <div>
-            <p className="App-intro">
-                Provas que ja fiz:
-            </p>
 
-            {
-                this.examsTooked.map(exam => {
-                    return(
-                        <div key={exam.name} className="App-Square">
-                            <span className="App-SpanSquare">{exam.name}</span>
-                        </div>    
-                    )                    
-                })
-            }                      
+        let tookedSqaures;
+        let metrics;
 
-            <div style={{ clear: "both" }} >&nbsp;</div>
+        if (this.ExamsTooked.User) {
+            tookedSqaures = ((this.ExamsTooked.User!.tookedExams.map(exam => {
+                return(
+                    <div key={exam.name} className="App-Square">
+                        <span className="App-SpanSquare">{exam.name}</span>
+                    </div>    
+                )                    
+            })))
 
-            <ExamsTookedMetrics />
-        </div>             
-      )
+            metrics = (
+                <ExamsTookedMetrics examMetrics={this.ExamsTooked.FirstExamMetrics!} examTitle={this.ExamsTooked.FirstExam!.name}/>
+            )
+        }
+        
+
+        return (
+            <div>
+                <p className="App-intro">
+                    Provas que ja fiz:
+                </p>
+
+                {tookedSqaures}
+
+                <div style={{ clear: "both" }} >&nbsp;</div>
+
+                {metrics}
+            </div>             
+        )
     }
+}
+
+// tslint:disable-next-line:max-classes-per-file
+class ExamsTookedState {
+    public User: IUser | null
+    public FirstExamMetrics: IExamMetrics | null
+    public FirstExam: IExam | null
 }
