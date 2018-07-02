@@ -7,6 +7,7 @@ export interface IUser {
 }
 
 export interface IExam {
+    id: string;
     name: string;
     date: Date;
     questions: IQuestion[];

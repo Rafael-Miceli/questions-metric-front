@@ -2,11 +2,11 @@ import * as React from 'react';
 import './App.css';
 import { ExamsTookedService } from './ExamesTookedService';
 import {ExamsTookedMetrics} from './ExamsTookedMetrics';
-import { IExam, IExamMetrics, IUser } from "./IExam";
+import { IExam, IUser } from "./IExam";
 
 export class ExamsTooked extends React.Component<any, ExamsTookedState> {
 
-    private ExamsTooked: ExamsTookedState = {User: null, FirstExamMetrics: null, FirstExam: null};
+    private ExamsTooked: ExamsTookedState = {User: null, SelectedExam: null};
     
     constructor(props: any) {
         super(props);
@@ -15,16 +15,23 @@ export class ExamsTooked extends React.Component<any, ExamsTookedState> {
         examsTookedService.getAllExams().then((user: IUser) => {
             
             if (user.tookedExams.length) {
-                this.ExamsTooked = {User: user, FirstExamMetrics: user.tookedExams[0].examMetrics, FirstExam: user.tookedExams[0]};                
+                this.ExamsTooked = {User: user, SelectedExam: user.tookedExams[0]};                
             } else {
-                this.ExamsTooked = {User: user, FirstExamMetrics: null, FirstExam: null};
+                this.ExamsTooked = {User: user, SelectedExam: null};
             }
 
             // tslint:disable-next-line:no-console
             console.log("Exames feitos: ", this.ExamsTooked);
         
-            this.setState(this.ExamsTooked)
-        });        
+            this.setState(this.ExamsTooked);
+        });
+    }
+
+    public selectExam(examId: string) {
+        const selectedExam = this.ExamsTooked.User!.tookedExams.filter(e => e.id === examId)[0];
+        this.ExamsTooked.SelectedExam = selectedExam;
+
+        this.setState(this.ExamsTooked);
     }
 
     public render() {
@@ -35,14 +42,14 @@ export class ExamsTooked extends React.Component<any, ExamsTookedState> {
         if (this.ExamsTooked.User) {
             tookedSqaures = ((this.ExamsTooked.User!.tookedExams.map(exam => {
                 return(
-                    <div key={exam.name} className="App-Square">
-                        <span className="App-SpanSquare">{exam.name}</span>
+                    <div key={exam.id} className="App-Square" onClick={this.selectExam.bind(this, exam.id)}>
+                        <span className="App-SpanSquare">{exam.date} {exam.name}</span>
                     </div>    
                 )                    
             })))
 
             metrics = (
-                <ExamsTookedMetrics examMetrics={this.ExamsTooked.FirstExamMetrics!} examTitle={this.ExamsTooked.FirstExam!.name}/>
+                <ExamsTookedMetrics examMetrics={this.ExamsTooked.SelectedExam!.examMetrics} examTitle={this.ExamsTooked.SelectedExam!.name}/>
             )
         }
         
@@ -66,6 +73,5 @@ export class ExamsTooked extends React.Component<any, ExamsTookedState> {
 // tslint:disable-next-line:max-classes-per-file
 class ExamsTookedState {
     public User: IUser | null
-    public FirstExamMetrics: IExamMetrics | null
-    public FirstExam: IExam | null
+    public SelectedExam: IExam | null
 }
