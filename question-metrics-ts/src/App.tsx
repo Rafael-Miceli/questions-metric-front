@@ -11,6 +11,7 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to QuestionMetrics</h1>
         </header>
+
         <p className="App-intro">
           Provas que ja fiz:
         </p>
@@ -30,6 +31,12 @@ class App extends React.Component {
             Métricas de todas as provas:
           </p>
         </div>
+
+        <div>
+          <p className="App-intro">
+            Concursos já ocorridos:
+          </p>
+        </div> 
         
       </div>
     );
