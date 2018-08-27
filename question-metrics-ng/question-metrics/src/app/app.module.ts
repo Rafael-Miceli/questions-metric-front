@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ShellComponent } from './dashboard/shell.component';
 import { PageNotFoundComponent } from './dashboard/page-not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   imports: [
     BrowserModule,
     UserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })
