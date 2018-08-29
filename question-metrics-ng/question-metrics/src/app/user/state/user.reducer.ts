@@ -3,7 +3,12 @@ export function reducer(state, action) {
     case 'LOGIN':
       return {
         ...state,
-        maskUserName: action.payload
+        usernameLoggedIn: action.payload
+      };
+    case 'LOAD_LOGIN':
+      return {
+        ...state,
+        usernameLoggedIn: action.payload
       };
 
     default:
