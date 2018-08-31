@@ -1,3 +1,8 @@
+export interface UserState {
+    maskUserName: boolean;
+    currentUser: User;
+  }
+
 export function reducer(state, action) {
   switch (action.type) {
     case 'LOGIN':
