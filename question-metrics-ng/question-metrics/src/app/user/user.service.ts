@@ -11,12 +11,15 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
+  public loggedInUser = this.getLoggedInUser();
+
   getLoggedInUser(): User {
     return JSON.parse(localStorage.getItem('loggedInUser')) as User;
   }
 
   LogIn(loginInfo: LoginInfo): Observable<User> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    console.log(`Indo fazer login:`, loginInfo);
     return this.http.post<User>(this.userApiUrl, loginInfo, {headers: headers})
     .pipe(
       tap(data => console.log(JSON.stringify(data))),

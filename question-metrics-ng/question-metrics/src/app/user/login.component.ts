@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { UserService } from './user.service';
 
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private username: string;
-  private password: string;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit() {
     // If Already Loged In
-    if (true) {
+    if (this.userService.loggedInUser) {
       this.router.navigate(['/dashboard']);
     }
   }
 
   login(loginForm: NgForm): void {
     console.log(`Logando`, loginForm);
+    this.userService.LogIn({username: loginForm.form.value.username, password: loginForm.form.value.password});
   }
 }
