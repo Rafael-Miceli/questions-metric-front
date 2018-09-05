@@ -20,6 +20,6 @@ export class LoginComponent implements OnInit {
   }
 
   login(loginForm: NgForm): void {
-    console.log(`Logando ${loginForm}`);
+    console.log(`Logando`, loginForm);
   }
 }
