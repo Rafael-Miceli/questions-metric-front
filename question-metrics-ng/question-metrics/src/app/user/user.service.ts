@@ -3,13 +3,18 @@ import { User, LoginInfo } from './user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
+import { AppSettingsService } from '../app-settings.service';
 
 @Injectable()
 export class UserService {
-
   private userApiUrl = 'user/login';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private appSettings: AppSettingsService
+  ) {
+    console.log('Resolved config', this.appSettings.getConfig('question-metrics-api-url'));
+  }
 
   public loggedInUser = this.getLoggedInUser();
 
@@ -20,11 +25,12 @@ export class UserService {
   LogIn(loginInfo: LoginInfo): Observable<User> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     console.log(`Indo fazer login:`, loginInfo);
-    return this.http.post<User>(this.userApiUrl, loginInfo, {headers: headers})
-    .pipe(
-      tap(data => console.log(JSON.stringify(data))),
-      catchError(this.handleError)
-    );
+    return this.http
+      .post<User>(this.userApiUrl, loginInfo, { headers: headers })
+      .pipe(
+        tap(data => console.log(JSON.stringify(data))),
+        catchError(this.handleError)
+      );
   }
 
   private handleError(err) {

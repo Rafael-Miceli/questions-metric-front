@@ -1,3 +1,5 @@
+import { APP_INITIALIZER } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { UserModule } from './user/user.module';
@@ -9,6 +11,11 @@ import { ShellComponent } from './dashboard/shell.component';
 import { PageNotFoundComponent } from './dashboard/page-not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppSettingsService } from './app-settings.service';
+
+export function configFactory(config: AppSettingsService) {
+  return () => config.load();
+}
 
 @NgModule({
   declarations: [
@@ -24,6 +31,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    AppSettingsService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: configFactory,
+      deps: [AppSettingsService],
+      multi: true
+    }
+  ]
 })
-export class AppModule { }
+export class AppModule {}
