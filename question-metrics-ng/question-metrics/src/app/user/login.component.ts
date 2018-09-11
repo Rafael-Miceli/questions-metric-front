@@ -20,6 +20,12 @@ export class LoginComponent implements OnInit {
 
   login(loginForm: NgForm): void {
     console.log(`Logando`, loginForm);
-    this.userService.LogIn({username: loginForm.form.value.username, password: loginForm.form.value.password});
+    this.userService.LogIn({username: loginForm.form.value.username, password: loginForm.form.value.password})
+      .subscribe(result => {
+        console.log(`result `, result);
+    },
+    err => {
+      console.log(`Error `, err);
+    });
   }
 }

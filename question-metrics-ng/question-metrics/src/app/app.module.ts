@@ -1,9 +1,17 @@
 import { APP_INITIALIZER } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
+
+import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRippleModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +25,13 @@ export function configFactory(config: AppSettingsService) {
   return () => config.load();
 }
 
+const modules = [
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRippleModule
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +44,8 @@ export function configFactory(config: AppSettingsService) {
     HttpClientModule,
     UserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ...modules
   ],
   bootstrap: [AppComponent],
   providers: [

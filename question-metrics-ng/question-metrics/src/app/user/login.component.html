@@ -1,6 +1,6 @@
-<form novalidate (ngSubmit)="login(loginForm)" #loginForm="ngForm" autocomplete="off">
+<!-- <form novalidate (ngSubmit)="login(loginForm)" #loginForm="ngForm" autocomplete="off">
   <div class="group">
-    <input ngModel name="username" type="email" required #userNameVar="ngModel" ngModel>
+    <input matInput ngModel name="username" type="email" required #userNameVar="ngModel" ngModel>
     <span class="highlight"></span>
     <span class="bar"></span>
     <label>Email</label>
@@ -19,10 +19,21 @@
   </button>
 </form>
 <footer>
-  <a href="http://www.polymer-project.org/" target="_blank">
-    <img src="https://www.polymer-project.org/images/logos/p-logo.svg">
-  </a>
-  <p>You Gotta Love
-    <a href="http://www.polymer-project.org/" target="_blank">Google</a>
-  </p>
-</footer>
+  
+</footer> -->
+
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Input">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Textarea"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Select">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

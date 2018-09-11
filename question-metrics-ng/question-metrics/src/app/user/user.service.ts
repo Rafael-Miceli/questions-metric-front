@@ -7,13 +7,14 @@ import { AppSettingsService } from '../app-settings.service';
 
 @Injectable()
 export class UserService {
-  private userApiUrl = 'user/login';
+  private baseApiUrl = '';
+  private userApiUrl = this.baseApiUrl + 'account/login';
 
   constructor(
     private http: HttpClient,
     private appSettings: AppSettingsService
   ) {
-    console.log('Resolved config', this.appSettings.getConfig('question-metrics-api-url'));
+    this.baseApiUrl = this.appSettings.getConfig('question-metrics-api-url');
   }
 
   public loggedInUser = this.getLoggedInUser();
@@ -24,11 +25,10 @@ export class UserService {
 
   LogIn(loginInfo: LoginInfo): Observable<User> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    console.log(`Indo fazer login:`, loginInfo);
     return this.http
-      .post<User>(this.userApiUrl, loginInfo, { headers: headers })
+      .post<User>(this.baseApiUrl + this.userApiUrl, loginInfo, { headers: headers })
       .pipe(
-        tap(data => console.log(JSON.stringify(data))),
+        tap(data => console.log(`Tap `, JSON.stringify(data))),
         catchError(this.handleError)
       );
   }
@@ -43,9 +43,9 @@ export class UserService {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
-      errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
+      errorMessage = `Backend returned code ${err.status}`;
     }
     console.error(err);
-    return throwError(errorMessage);
+    return throwError(err);
   }
 }
