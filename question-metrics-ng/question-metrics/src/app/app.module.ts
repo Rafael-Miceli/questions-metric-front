@@ -6,13 +6,6 @@ import { NgModule } from '@angular/core';
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 
-import {
-  MatButtonModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatRippleModule
-} from '@angular/material';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShellComponent } from './dashboard/shell.component';
@@ -25,13 +18,6 @@ export function configFactory(config: AppSettingsService) {
   return () => config.load();
 }
 
-const modules = [
-  MatButtonModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatRippleModule
-];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,11 +27,10 @@ const modules = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     UserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ...modules
+    AppRoutingModule
   ],
   bootstrap: [AppComponent],
   providers: [
