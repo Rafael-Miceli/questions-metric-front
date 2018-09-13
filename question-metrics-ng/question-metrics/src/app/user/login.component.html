@@ -1,10 +1,8 @@
 <!-- <form novalidate (ngSubmit)="login(loginForm)" #loginForm="ngForm" autocomplete="off">
-  <div class="group">
-    <input matInput ngModel name="username" type="email" required #userNameVar="ngModel" ngModel>
-    <span class="highlight"></span>
-    <span class="bar"></span>
-    <label>Email</label>
-  </div>
+  <mat-form-field>
+    <input matInput placeholder="E-mail" ngModel name="username" type="email" required #userNameVar="ngModel" ngModel>
+  </mat-form-field>
+
   <div class="group">
     <input type="password" ngModel name="password" required #passwordVar="ngModel" ngModel>
     <span class="highlight"></span>
@@ -18,22 +16,28 @@
     </div>
   </button>
 </form>
-<footer>
+ -->
+
+<form novalidate (ngSubmit)="login(loginForm)" #loginForm="ngForm" autocomplete="off">
+    <mat-form-field>
+      <input matInput placeholder="E-mail" ngModel name="username" type="email" required #userNameVar="ngModel" ngModel>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Password" ngModel name="password" type="password" required #userNameVar="ngModel" ngModel>
+    </mat-form-field>
   
-</footer> -->
-
-<div class="example-container">
-  <mat-form-field>
-    <input matInput placeholder="Input">
-  </mat-form-field>
-
-  <mat-form-field>
-    <textarea matInput placeholder="Textarea"></textarea>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-select placeholder="Select">
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
+    <button type="submit" class="button buttonBlue" [disabled]="!loginForm.valid">Login
+      <div class="ripples buttonRipples">
+        <span class="ripplesCircle"></span>
+      </div>
+    </button>
+  </form>
+  <footer>
+    <a href="http://www.polymer-project.org/" target="_blank">
+      <img src="https://www.polymer-project.org/images/logos/p-logo.svg">
+    </a>
+    <p>You Gotta Love
+      <a href="http://www.polymer-project.org/" target="_blank">Google</a>
+    </p>
+  </footer>
