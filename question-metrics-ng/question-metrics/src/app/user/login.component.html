@@ -1,43 +1,11 @@
-<!-- <form novalidate (ngSubmit)="login(loginForm)" #loginForm="ngForm" autocomplete="off">
-  <mat-form-field>
+<form novalidate (ngSubmit)="login(loginForm)" #loginForm="ngForm" autocomplete="off">
+  <mat-form-field style="width: 100%">
     <input matInput placeholder="E-mail" ngModel name="username" type="email" required #userNameVar="ngModel" ngModel>
   </mat-form-field>
 
-  <div class="group">
-    <input type="password" ngModel name="password" required #passwordVar="ngModel" ngModel>
-    <span class="highlight"></span>
-    <span class="bar"></span>
-    <label>Password</label>
-  </div>
+  <mat-form-field style="width: 100%">
+    <input matInput placeholder="Password" ngModel name="password" type="password" required #userNameVar="ngModel" ngModel>
+  </mat-form-field>
 
-  <button type="submit" class="button buttonBlue" [disabled]="!loginForm.valid">Login
-    <div class="ripples buttonRipples">
-      <span class="ripplesCircle"></span>
-    </div>
-  </button>
+  <button mat-button type="submit" class="button buttonBlue" [disabled]="!loginForm.valid">Login</button>
 </form>
- -->
-
-<form novalidate (ngSubmit)="login(loginForm)" #loginForm="ngForm" autocomplete="off">
-    <mat-form-field>
-      <input matInput placeholder="E-mail" ngModel name="username" type="email" required #userNameVar="ngModel" ngModel>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Password" ngModel name="password" type="password" required #userNameVar="ngModel" ngModel>
-    </mat-form-field>
-  
-    <button type="submit" class="button buttonBlue" [disabled]="!loginForm.valid">Login
-      <div class="ripples buttonRipples">
-        <span class="ripplesCircle"></span>
-      </div>
-    </button>
-  </form>
-  <footer>
-    <a href="http://www.polymer-project.org/" target="_blank">
-      <img src="https://www.polymer-project.org/images/logos/p-logo.svg">
-    </a>
-    <p>You Gotta Love
-      <a href="http://www.polymer-project.org/" target="_blank">Google</a>
-    </p>
-  </footer>
