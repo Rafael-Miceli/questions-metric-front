@@ -17,7 +17,7 @@ export class UserService {
     this.baseApiUrl = this.appSettings.getConfig('question-metrics-api-url');
   }
 
-  public loggedInUser = this.getLoggedInUser();
+  public loggedInUser: User = this.getLoggedInUser();
 
   getLoggedInUser(): User {
     return JSON.parse(localStorage.getItem('loggedInUser')) as User;
@@ -28,7 +28,6 @@ export class UserService {
     return this.http
       .post<User>(this.baseApiUrl + this.userApiUrl, loginInfo, { headers: headers })
       .pipe(
-        tap(data => console.log(`Tap `, JSON.stringify(data))),
         catchError(this.handleError)
       );
   }

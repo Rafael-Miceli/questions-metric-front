@@ -23,6 +23,9 @@ export class LoginComponent implements OnInit {
     this.userService.LogIn({username: loginForm.form.value.username, password: loginForm.form.value.password})
       .subscribe(result => {
         console.log(`result `, result);
+        localStorage.setItem('loggedInUser', JSON.stringify(result));
+        this.userService.loggedInUser = result;
+        this.router.navigate(['/dashboard']);
     },
     err => {
       console.log(`Error `, err);
