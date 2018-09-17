@@ -17,13 +17,13 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router, private userService: UserService) {}
 
   canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    _: ActivatedRouteSnapshot,
+    _state: RouterStateSnapshot
   ): boolean {
-    return this.checkLoggedIn(state.url);
+    return this.checkLoggedIn();
   }
 
-  checkLoggedIn(url: string): boolean {
+  checkLoggedIn(): boolean {
     console.log('Buscando usuario logado');
 
     console.log(`usuario logado ${this.userService.loggedInUser}`);

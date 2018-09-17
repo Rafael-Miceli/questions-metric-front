@@ -4,11 +4,12 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AppSettingsService {
-  private configs: Object = null;
+  private configs: Object = {};
 
   constructor(private http: HttpClient) {}
 
   public getConfig(value: string) {
+    // @ts-ignore
     return this.configs[value];
   }
 
@@ -28,6 +29,7 @@ export class AppSettingsService {
   }
 }
 
+// @ts-ignore
 const toPromise = obs =>
   new Promise((resolve, reject) => {
     obs.subscribe({

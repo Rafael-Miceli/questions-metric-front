@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ShellComponent } from './dashboard/shell.component';
 import { PageNotFoundComponent } from './dashboard/page-not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ExamListComponent } from './exam/examlist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppSettingsService } from './app-settings.service';
 
@@ -23,6 +24,7 @@ export function configFactory(config: AppSettingsService) {
     AppComponent,
     ShellComponent,
     PageNotFoundComponent,
+    ExamListComponent,
     DashboardComponent
   ],
   imports: [
