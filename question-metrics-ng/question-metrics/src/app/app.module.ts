@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ExamListComponent } from './exam/examlist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppSettingsService } from './app-settings.service';
+import { ExamComponent } from './exam/exam.component';
 
 export function configFactory(config: AppSettingsService) {
   return () => config.load();
@@ -25,6 +26,7 @@ export function configFactory(config: AppSettingsService) {
     ShellComponent,
     PageNotFoundComponent,
     ExamListComponent,
+    ExamComponent,
     DashboardComponent
   ],
   imports: [
