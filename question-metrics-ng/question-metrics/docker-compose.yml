@@ -1,0 +1,10 @@
+version: 3
+
+services:
+  question-metrics-front:
+    build: .
+    environment: 
+      - variavel1=teste1
+      - variavel2=teste2
+    ports: 
+      - "5001:80"
